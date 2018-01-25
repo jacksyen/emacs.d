@@ -2,6 +2,13 @@
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (let ((minver 23))
   (unless (>= emacs-major-version minver)
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
@@ -26,18 +33,17 @@
 ;;----------------------------------------------------------------------------
 
 (require-package 'wgrep)
-(require-package 'project-local-variables)
+;;(require-package 'project-local-variables)
 (require-package 'diminish)
 (require-package 'scratch)
 (require-package 'mwe-log-commands)
 
 (require 'init-frame-hooks)
 (require 'init-xterm)
-(require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
 (require 'init-proxies)
-(require 'init-dired)
+;;(require 'init-dired)
 (require 'init-isearch)
 (require 'init-uniquify)
 (require 'init-ibuffer)
@@ -49,22 +55,21 @@
 (require 'init-auto-complete)
 (require 'init-windows)
 (require 'init-sessions)
-(require 'init-fonts)
 (require 'init-mmm)
 
 (require 'init-editing-utils)
 
 (require 'init-darcs)
-(require 'init-git)
+;;(require 'init-git)
 
 (require 'init-crontab)
 (require 'init-textile)
 (require 'init-markdown)
-(require 'init-csv)
+;;(require 'init-csv)
 (require 'init-erlang)
 (require 'init-javascript)
-(require 'init-php)
-(require 'init-org)
+;;(require 'init-php)
+;;(require 'init-org)
 (require 'init-nxml)
 (require 'init-css)
 (require 'init-haml)
@@ -77,8 +82,10 @@
 (require 'init-paredit)
 (require 'init-lisp)
 (require 'init-slime)
-(require 'init-clojure)
+;;(require 'init-clojure)
 (require 'init-common-lisp)
+
+(require 'init-auto-complete)
 
 (when *spell-check-support-enabled*
   (require 'init-spelling))
@@ -126,6 +133,12 @@
 ;; Locales (setting them earlier in this file doesn't work in X)
 ;;----------------------------------------------------------------------------
 (require 'init-locales)
+
+;; jacksyen
+(load-file (concat (file-name-directory load-file-name)
+                   "gk7/load-paths.el"))
+;;(put 'scroll-left 'disabled nil)
+
 
 (add-hook 'after-init-hook
           (lambda ()
